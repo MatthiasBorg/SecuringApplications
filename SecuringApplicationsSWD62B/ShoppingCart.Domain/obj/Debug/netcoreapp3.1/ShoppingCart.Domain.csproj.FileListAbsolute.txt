@@ -1,0 +1,24 @@
+E:\Files\School Files\School (Mcast)\Level 6 2 year\Semester 2\Securing Applications\SecuringApp_cleanArc\ShoppingCart.Domain\bin\Debug\netcoreapp3.1\ShoppingCart.Domain.deps.json
+E:\Files\School Files\School (Mcast)\Level 6 2 year\Semester 2\Securing Applications\SecuringApp_cleanArc\ShoppingCart.Domain\bin\Debug\netcoreapp3.1\ShoppingCart.Domain.runtimeconfig.json
+E:\Files\School Files\School (Mcast)\Level 6 2 year\Semester 2\Securing Applications\SecuringApp_cleanArc\ShoppingCart.Domain\bin\Debug\netcoreapp3.1\ShoppingCart.Domain.runtimeconfig.dev.json
+E:\Files\School Files\School (Mcast)\Level 6 2 year\Semester 2\Securing Applications\SecuringApp_cleanArc\ShoppingCart.Domain\bin\Debug\netcoreapp3.1\ShoppingCart.Domain.dll
+E:\Files\School Files\School (Mcast)\Level 6 2 year\Semester 2\Securing Applications\SecuringApp_cleanArc\ShoppingCart.Domain\bin\Debug\netcoreapp3.1\ShoppingCart.Domain.pdb
+E:\Files\School Files\School (Mcast)\Level 6 2 year\Semester 2\Securing Applications\SecuringApp_cleanArc\ShoppingCart.Domain\obj\Debug\netcoreapp3.1\ShoppingCart.Domain.csprojAssemblyReference.cache
+E:\Files\School Files\School (Mcast)\Level 6 2 year\Semester 2\Securing Applications\SecuringApp_cleanArc\ShoppingCart.Domain\obj\Debug\netcoreapp3.1\ShoppingCart.Domain.AssemblyInfoInputs.cache
+E:\Files\School Files\School (Mcast)\Level 6 2 year\Semester 2\Securing Applications\SecuringApp_cleanArc\ShoppingCart.Domain\obj\Debug\netcoreapp3.1\ShoppingCart.Domain.AssemblyInfo.cs
+E:\Files\School Files\School (Mcast)\Level 6 2 year\Semester 2\Securing Applications\SecuringApp_cleanArc\ShoppingCart.Domain\obj\Debug\netcoreapp3.1\ShoppingCart.Domain.csproj.CoreCompileInputs.cache
+E:\Files\School Files\School (Mcast)\Level 6 2 year\Semester 2\Securing Applications\SecuringApp_cleanArc\ShoppingCart.Domain\obj\Debug\netcoreapp3.1\ShoppingCart.Domain.dll
+E:\Files\School Files\School (Mcast)\Level 6 2 year\Semester 2\Securing Applications\SecuringApp_cleanArc\ShoppingCart.Domain\obj\Debug\netcoreapp3.1\ShoppingCart.Domain.pdb
+E:\Files\School Files\School (Mcast)\Level 6 2 year\Semester 2\Securing Applications\SecuringApp_cleanArc\ShoppingCart.Domain\obj\Debug\netcoreapp3.1\ShoppingCart.Domain.genruntimeconfig.cache
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\SecuringApplicationsSWD62B\ShoppingCart.Domain\bin\Debug\netcoreapp3.1\ShoppingCart.Domain.deps.json
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\SecuringApplicationsSWD62B\ShoppingCart.Domain\bin\Debug\netcoreapp3.1\ShoppingCart.Domain.runtimeconfig.json
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\SecuringApplicationsSWD62B\ShoppingCart.Domain\bin\Debug\netcoreapp3.1\ShoppingCart.Domain.runtimeconfig.dev.json
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\SecuringApplicationsSWD62B\ShoppingCart.Domain\bin\Debug\netcoreapp3.1\ShoppingCart.Domain.dll
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\SecuringApplicationsSWD62B\ShoppingCart.Domain\bin\Debug\netcoreapp3.1\ShoppingCart.Domain.pdb
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\SecuringApplicationsSWD62B\ShoppingCart.Domain\obj\Debug\netcoreapp3.1\ShoppingCart.Domain.csprojAssemblyReference.cache
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\SecuringApplicationsSWD62B\ShoppingCart.Domain\obj\Debug\netcoreapp3.1\ShoppingCart.Domain.AssemblyInfoInputs.cache
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\SecuringApplicationsSWD62B\ShoppingCart.Domain\obj\Debug\netcoreapp3.1\ShoppingCart.Domain.AssemblyInfo.cs
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\SecuringApplicationsSWD62B\ShoppingCart.Domain\obj\Debug\netcoreapp3.1\ShoppingCart.Domain.csproj.CoreCompileInputs.cache
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\SecuringApplicationsSWD62B\ShoppingCart.Domain\obj\Debug\netcoreapp3.1\ShoppingCart.Domain.dll
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\SecuringApplicationsSWD62B\ShoppingCart.Domain\obj\Debug\netcoreapp3.1\ShoppingCart.Domain.pdb
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\SecuringApplicationsSWD62B\ShoppingCart.Domain\obj\Debug\netcoreapp3.1\ShoppingCart.Domain.genruntimeconfig.cache
