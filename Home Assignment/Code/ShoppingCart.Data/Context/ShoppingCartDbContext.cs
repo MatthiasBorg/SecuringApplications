@@ -2,6 +2,7 @@
 using ShoppingCart.Domain.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ShoppingCart.Data.Context
@@ -17,6 +18,7 @@ namespace ShoppingCart.Data.Context
         public DbSet<Student> Students { get; set; }
         public DbSet<StudentAssignment> StudentAssignments { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
+        public IQueryable<Assignment> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

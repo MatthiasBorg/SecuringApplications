@@ -14,8 +14,9 @@ namespace ShoppingCart.Application.Interfaces
         AssignmentViewModel GetAssignment(Guid id);
 
         void AddAssignment(AssignmentViewModel model);
-
-
+        
+        IQueryable<AssignmentViewModel> GetAssignmentsByTeacher(Guid id);
+        
         void DeleteAssignment(Guid id);
 
     }

@@ -12,7 +12,7 @@ namespace ShoppingCart.Domain.Interfaces
         
         IQueryable<Comment> GetComments();
         
-        IQueryable<Comment> GetCommentsByAssignment(Guid id);
+        //IQueryable<Comment> GetCommentsByAssignment(Guid id);
 
         Guid AddComment(Comment c);
 

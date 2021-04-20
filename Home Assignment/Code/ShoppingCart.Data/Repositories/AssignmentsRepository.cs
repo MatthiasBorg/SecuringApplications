@@ -17,11 +17,6 @@ namespace ShoppingCart.Data.Repositories
             _context = context;
 
         }
-        
-        public IQueryable<Assignment> GetAssignmentsByStudent(Guid id)
-        {
-            throw new NotImplementedException();
-        }
 
         public Guid AddAssignment(Assignment a)
         {
@@ -37,17 +32,18 @@ namespace ShoppingCart.Data.Repositories
 
         public Assignment GetAssignment(Guid id)
         {
-            throw new NotImplementedException();
+            return _context.Assignments.SingleOrDefault(x => x.Id == id);
         }
 
         public IQueryable<Assignment> GetAssignments()
         {
-            throw new NotImplementedException();
+            return _context.Assignments;
         }
 
-        public IQueryable<Assignment> GetAssignmentsByTeacher(Guid id)
-        {
-            throw new NotImplementedException();
-        }
+        // public IQueryable<Assignment> GetAssignmentsByTeacher(Guid id)
+        // {
+        //     //return _context.Assignments.Fin
+        //     throw new NotImplementedException();
+        // }
     }
 }

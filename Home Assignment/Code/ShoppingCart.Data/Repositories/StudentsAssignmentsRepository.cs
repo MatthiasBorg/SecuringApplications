@@ -17,27 +17,37 @@ namespace ShoppingCart.Data.Repositories
         
         public StudentAssignment GetStudentAssignment(Guid id)
         {
-            throw new NotImplementedException();
+            return _context.StudentAssignments.SingleOrDefault(x => x.Id == id);
         }
 
         public IQueryable<StudentAssignment> GetStudentAssignments()
         {
-            throw new NotImplementedException();
+            return _context.StudentAssignments;
         }
 
-        public IQueryable<StudentAssignment> GetStudentAssignmentsById(Guid id)
+        // public IQueryable<StudentAssignment> GetStudentAssignmentsById(Guid id)
+        // {
+        //     throw new NotImplementedException();
+        // }
+
+        public Guid AddStudentAssignment(StudentAssignment sa)
         {
-            throw new NotImplementedException();
+            _context.StudentAssignments.Add(sa);
+            _context.SaveChanges();
+            return sa.Id;
         }
 
-        public Guid AddStudentAssignment(Comment c)
+        public bool SubmitAssignment(string filePath, Guid id)
         {
-            throw new NotImplementedException();
-        }
+            //throw new NotImplementedException();
 
-        public bool SubmitAssignment(string filePath)
-        {
-            throw new NotImplementedException();
+            var assignemnt = GetStudentAssignment(id);
+            assignemnt.File = filePath;
+            assignemnt.Submitted = !assignemnt.Submitted;
+            _context.StudentAssignments.Update(assignemnt);
+            _context.SaveChanges();
+
+            return assignemnt.Submitted;
         }
     }
 }

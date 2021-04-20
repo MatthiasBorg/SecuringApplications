@@ -12,10 +12,10 @@ namespace ShoppingCart.Domain.Interfaces
         
         IQueryable<StudentAssignment> GetStudentAssignments();
         
-        IQueryable<StudentAssignment> GetStudentAssignmentsById(Guid id);
+        //IQueryable<StudentAssignment> GetStudentAssignmentsById(Guid id);
 
-        Guid AddStudentAssignment(Comment c);
+        Guid AddStudentAssignment(StudentAssignment sa);
 
-        bool SubmitAssignment(String filePath);
+        bool SubmitAssignment(String filePath, Guid id);
     }
 }

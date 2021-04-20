@@ -14,6 +14,11 @@ namespace ShoppingCart.Application.Services
             throw new NotImplementedException();
         }
 
+        public IQueryable<AssignmentViewModel> GetAssignmentsByTeacher(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void DeleteAssignment(Guid id)
         {
             throw new NotImplementedException();

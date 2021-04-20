@@ -17,22 +17,24 @@ namespace ShoppingCart.Data.Repositories
         
         public Comment GetComment(Guid id)
         {
-            throw new NotImplementedException();
+            return _context.Comments.SingleOrDefault(x => x.Id == id);
         }
 
         public IQueryable<Comment> GetComments()
         {
-            throw new NotImplementedException();
+            return _context.Comments;
         }
 
-        public IQueryable<Comment> GetCommentsByAssignment(Guid id)
-        {
-            throw new NotImplementedException();
-        }
+        // public IQueryable<Comment> GetCommentsByAssignment(Guid id)
+        // {
+        //     throw new NotImplementedException();
+        // }
 
         public Guid AddComment(Comment c)
         {
-            throw new NotImplementedException();
+            _context.Comments.Add(c);
+            _context.SaveChanges();
+            return c.Id;
         }
     }
 }

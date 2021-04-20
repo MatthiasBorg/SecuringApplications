@@ -17,12 +17,14 @@ namespace ShoppingCart.Data.Repositories
         
         public IQueryable<Teacher> GetTeachers()
         {
-            throw new NotImplementedException();
+            return _context.Teachers;
         }
 
         public Guid AddTeacher(Teacher t)
         {
-            throw new NotImplementedException();
+            _context.Teachers.Add(t);
+            _context.SaveChanges();
+            return t.Id;
         }
     }
 }
