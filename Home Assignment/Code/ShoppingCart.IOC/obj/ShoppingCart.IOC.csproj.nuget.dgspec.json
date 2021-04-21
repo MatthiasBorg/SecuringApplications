@@ -14,7 +14,7 @@
         "outputPath": "C:\\Users\\borgm\\Documents\\Git Repos\\Securing Applications\\Securing-Applications\\Home Assignment\\Code\\ShoppingCart.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Microsoft\\Xamarin\\NuGet"
         ],
         "configFilePaths": [
           "C:\\Users\\borgm\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -106,7 +106,7 @@
         "outputPath": "C:\\Users\\borgm\\Documents\\Git Repos\\Securing Applications\\Securing-Applications\\Home Assignment\\Code\\ShoppingCart.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Microsoft\\Xamarin\\NuGet"
         ],
         "configFilePaths": [
           "C:\\Users\\borgm\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -190,7 +190,7 @@
         "outputPath": "C:\\Users\\borgm\\Documents\\Git Repos\\Securing Applications\\Securing-Applications\\Home Assignment\\Code\\ShoppingCart.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Microsoft\\Xamarin\\NuGet"
         ],
         "configFilePaths": [
           "C:\\Users\\borgm\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -270,7 +270,7 @@
         "outputPath": "C:\\Users\\borgm\\Documents\\Git Repos\\Securing Applications\\Securing-Applications\\Home Assignment\\Code\\ShoppingCart.IOC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Microsoft\\Xamarin\\NuGet"
         ],
         "configFilePaths": [
           "C:\\Users\\borgm\\AppData\\Roaming\\NuGet\\NuGet.Config",

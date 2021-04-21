@@ -12,6 +12,10 @@ namespace ShoppingCart.Application.AutoMapper
         public ViewModelToDomainProfile()
         {
             CreateMap<AssignmentViewModel, Assignment>();
+            CreateMap<StudentViewModel, Student>();
+            CreateMap<StudentAssignmentViewModel, StudentAssignment>();
+            CreateMap<TeacherViewModel, Teacher>();
+            CreateMap<CommentViewModel, Comment>();
         }
     }
 }

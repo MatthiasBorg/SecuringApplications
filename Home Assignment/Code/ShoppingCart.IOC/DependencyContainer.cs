@@ -36,6 +36,18 @@ namespace ShoppingCart.IOC
 
             services.AddScoped<IAssignmentsRepository, AssignmentsRepository>();
             services.AddScoped<IAssignmentsService, AssignmentsService>();
+            
+            services.AddScoped<ICommentsRepository, CommentsRepository>();
+            services.AddScoped<ICommentsService, CommentsService>();
+            
+            services.AddScoped<IStudentAssignmentsRepository, StudentsAssignmentsRepository>();
+            services.AddScoped<IStudentAssignmentsService, StudentAssignmentsService>();
+            
+            services.AddScoped<IStudentsRepository, StudentsRepository>();
+            services.AddScoped<IStudentsService, StudentsService>();
+            
+            services.AddScoped<ITeachersRepository, TeachersRepository>();
+            services.AddScoped<ITeachersService, TeachersService>();
 
             services.AddAutoMapper(typeof(AutoMapperConfiguration));
             AutoMapperConfiguration.RegisterMappings();

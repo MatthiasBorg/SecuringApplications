@@ -1,20 +1,15 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using ShoppingCart.Application.ViewModels;
+using ShoppingCart.Domain.Models;
 
 namespace ShoppingCart.Application.Interfaces
 {
     public interface ITeachersService
     {
-        public Guid Id { get; set; }
-
-        [Required(ErrorMessage = "Please Enter Email")]
-        public string Email { get; set; }
+        IQueryable<TeacherViewModel> GetTeachers();
         
-        [Required(ErrorMessage = "Please Enter First Name")]
-        public string FirstName { get; set; }
-
-        [Required(ErrorMessage = "Please Enter Last Name")]
-        public string LastName { get; set; }
+        Guid AddTeacher(TeacherViewModel t);
     }
 }
