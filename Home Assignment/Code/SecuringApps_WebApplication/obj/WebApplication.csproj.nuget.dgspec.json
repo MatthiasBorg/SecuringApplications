@@ -14,7 +14,7 @@
         "outputPath": "C:\\Users\\borgm\\Documents\\Git Repos\\Securing Applications\\Securing-Applications\\Home Assignment\\Code\\SecuringApps_WebApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
           "C:\\Users\\borgm\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -71,15 +71,25 @@
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[3.1.12, )"
+              "version": "[3.1.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[3.1.13, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.12, )"
+              "version": "[3.1.13, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.5, )"
+            },
+            "PasswordGenerator": {
+              "target": "Package",
+              "version": "[2.0.5, )"
             }
           },
           "imports": [
@@ -114,7 +124,7 @@
         "outputPath": "C:\\Users\\borgm\\Documents\\Git Repos\\Securing Applications\\Securing-Applications\\Home Assignment\\Code\\ShoppingCart.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
           "C:\\Users\\borgm\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -153,6 +163,10 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[8.1.0, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[2.11.1, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -206,7 +220,7 @@
         "outputPath": "C:\\Users\\borgm\\Documents\\Git Repos\\Securing Applications\\Securing-Applications\\Home Assignment\\Code\\ShoppingCart.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
           "C:\\Users\\borgm\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -290,7 +304,7 @@
         "outputPath": "C:\\Users\\borgm\\Documents\\Git Repos\\Securing Applications\\Securing-Applications\\Home Assignment\\Code\\ShoppingCart.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
           "C:\\Users\\borgm\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -370,7 +384,7 @@
         "outputPath": "C:\\Users\\borgm\\Documents\\Git Repos\\Securing Applications\\Securing-Applications\\Home Assignment\\Code\\ShoppingCart.IOC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
           "C:\\Users\\borgm\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -33,18 +33,24 @@ namespace SecuringApps_WebApplication
                     Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDefaultIdentity<ApplicationUser>(
-                options => {
-                    options.SignIn.RequireConfirmedAccount = true;
-                    options.Password.RequiredLength = 6;
-                    options.Lockout.DefaultLockoutTimeSpan = new TimeSpan(0, 6, 0);
+                    options =>
+                    {
+                        options.SignIn.RequireConfirmedAccount = true;
+                        options.Password.RequiredLength = 6;
+                        options.Lockout.DefaultLockoutTimeSpan = new TimeSpan(0, 6, 0);
                     })
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-
+           
            services.Configure<IdentityOptions>(
                options => {
                    //testing
                    options.SignIn.RequireConfirmedEmail = true;
                });
+           
+           // services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+           //     .AddRoles<IdentityRole>()
+           //     .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddAuthentication()
                 .AddGoogle(options =>

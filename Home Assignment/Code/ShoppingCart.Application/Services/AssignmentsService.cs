@@ -24,10 +24,11 @@ namespace ShoppingCart.Application.Services
             _assignmentsRepo = assignmentsRepo;
         }
         
-        public void AddAssignment(AssignmentViewModel assignment)
+        public Guid AddAssignment(AssignmentViewModel assignment)
         {
             var newAssignment = _mapper.Map<Assignment>(assignment);
             _assignmentsRepo.AddAssignment(newAssignment);
+            return newAssignment.Id;
         }
         
         public IQueryable<AssignmentViewModel> GetAssignments()

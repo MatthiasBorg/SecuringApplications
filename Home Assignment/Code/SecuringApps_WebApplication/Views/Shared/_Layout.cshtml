@@ -22,9 +22,11 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+                        @if (User.IsInRole("Teacher")){
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Assignments" asp-action="Index">Assignments</a>
                         </li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -32,6 +34,7 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            @Html.Partial("ViewFeedbackPartial")
             @RenderBody()
         </main>
     </div>

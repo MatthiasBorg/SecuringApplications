@@ -47,6 +47,16 @@ namespace SecuringApps_WebApplication.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Name")]
+            public string Name { get; set; }
+            
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "LastName")]
+            public string LastName { get; set; }
+            
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }

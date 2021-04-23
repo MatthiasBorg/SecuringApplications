@@ -22,6 +22,7 @@ namespace ShoppingCart.Data.Repositories
 
         public Guid AddStudent(Student s)
         {
+            s.Teacher = null;
             _context.Students.Add(s);
             _context.SaveChanges();
             return s.Id;

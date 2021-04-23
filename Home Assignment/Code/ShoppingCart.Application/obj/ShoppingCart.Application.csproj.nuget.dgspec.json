@@ -14,7 +14,7 @@
         "outputPath": "C:\\Users\\borgm\\Documents\\Git Repos\\Securing Applications\\Securing-Applications\\Home Assignment\\Code\\ShoppingCart.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
           "C:\\Users\\borgm\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,6 +53,10 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[8.1.0, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[2.11.1, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -106,7 +110,7 @@
         "outputPath": "C:\\Users\\borgm\\Documents\\Git Repos\\Securing Applications\\Securing-Applications\\Home Assignment\\Code\\ShoppingCart.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
           "C:\\Users\\borgm\\AppData\\Roaming\\NuGet\\NuGet.Config",

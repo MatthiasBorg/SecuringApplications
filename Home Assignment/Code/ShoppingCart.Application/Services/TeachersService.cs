@@ -29,6 +29,11 @@ namespace ShoppingCart.Application.Services
             return teachers;
         }
 
+        public TeacherViewModel GetTeacherByEmail(string email)
+        {
+            return _mapper.Map<TeacherViewModel>(_teachersRepository.GetTeacherByEmail(email));
+        }
+
         public Guid AddTeacher(TeacherViewModel t)
         {
             var newTeacher = _mapper.Map<Teacher>(t);

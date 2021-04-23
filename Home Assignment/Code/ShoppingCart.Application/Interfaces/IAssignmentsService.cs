@@ -12,7 +12,7 @@ namespace ShoppingCart.Application.Interfaces
 
         AssignmentViewModel GetAssignment(Guid id);
 
-        void AddAssignment(AssignmentViewModel model);
+        Guid AddAssignment(AssignmentViewModel model);
         
         IQueryable<AssignmentViewModel> GetAssignmentsByTeacher(Guid id);
 
