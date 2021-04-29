@@ -1382,3 +1382,9 @@ C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\H
 C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Assignments\Index.cshtml.g.cs
 C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ViewFeedbackPartial.cshtml.g.cs
 C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Assignments\Details.cshtml.g.cs
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\StudentAssignments\Index.cshtml.g.cs
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\StudentAssignments\Details.cshtml.g.cs
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\StudentAssignments\SubmitAction.cshtml.g.cs
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\StudentAssignments\GetAllSubmittedAssignments.cshtml.g.cs
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Create.cshtml.g.cs
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Index.cshtml.g.cs

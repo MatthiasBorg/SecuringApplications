@@ -20,6 +20,11 @@ namespace ShoppingCart.Data.Repositories
             return _context.Students;
         }
 
+        public Student GetStudentByEmail(string email)
+        {
+            return _context.Students.SingleOrDefault(x => x.Email == email);
+        }
+
         public Guid AddStudent(Student s)
         {
             s.Teacher = null;

@@ -1,0 +1,81 @@
+﻿@model IEnumerable<ShoppingCart.Application.ViewModels.StudentAssignmentViewModel>
+
+@{
+    ViewData["Title"] = "GetAllSubmittedAssignments";
+}
+
+<h1>GetAllSubmittedAssignments</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Assignment.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Assignment.PublishedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Assignment.Deadline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.File)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Submitted)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            @if (item.Submitted && (item.Student.Teacher.Email == User.Identity.Name))
+            {
+                <tr>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.Assignment.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.Assignment.PublishedDate)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.Assignment.Deadline)
+                    </th>
+                    <td>
+                        @if (item.File != null)
+                        {
+                            <a asp-action="DownloadFile" asp-route-id="@item.Id">Download File</a>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.File)
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Submitted)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    </td>
+                </tr>
+            }
+            @*<tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.File)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Submitted)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>*@
+        }
+    </tbody>
+</table>

@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ShoppingCart.Application.ViewModels;
+using ShoppingCart.Domain.Models;
 
 namespace SecuringApps_WebApplication.Data
 {
@@ -14,5 +15,8 @@ namespace SecuringApps_WebApplication.Data
         {
         }
         public DbSet<ShoppingCart.Application.ViewModels.AssignmentViewModel> AssignmentViewModel { get; set; }
+        public DbSet<ShoppingCart.Domain.Models.StudentAssignment> StudentAssignment { get; set; }
+        public DbSet<ShoppingCart.Application.ViewModels.StudentAssignmentViewModel> StudentAssignmentViewModel { get; set; }
+        public DbSet<ShoppingCart.Application.ViewModels.CommentViewModel> CommentViewModel { get; set; }
     }
 }

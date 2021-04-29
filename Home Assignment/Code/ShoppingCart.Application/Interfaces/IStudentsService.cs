@@ -11,6 +11,8 @@ namespace ShoppingCart.Application.Interfaces
 
         IQueryable<StudentViewModel> GetStudentsByTeacher(Guid id);
 
+        StudentViewModel GetStudentByEmail(string email);
+
         Guid AddStudent(StudentViewModel s);
     }
 }

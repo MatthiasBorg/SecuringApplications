@@ -10,6 +10,8 @@ namespace ShoppingCart.Domain.Interfaces
     {
         IQueryable<Student> GetStudents();
 
+        Student GetStudentByEmail(string email);
+
         Guid AddStudent(Student s);
     }
 }

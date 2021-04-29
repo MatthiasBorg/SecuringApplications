@@ -33,6 +33,10 @@ namespace ShoppingCart.Application.Services
             var students = _studentsRepository.GetStudents().Where(x => x.Teacher.Id == id).ProjectTo<StudentViewModel>(_mapper.ConfigurationProvider);
             return students;
         }
+        public StudentViewModel GetStudentByEmail(string email)
+        {
+            return _mapper.Map<StudentViewModel>(_studentsRepository.GetStudentByEmail(email));
+        }
 
         public Guid AddStudent(StudentViewModel s)
         {

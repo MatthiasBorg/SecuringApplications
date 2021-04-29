@@ -1,0 +1,68 @@
+﻿@model ShoppingCart.Application.ViewModels.StudentAssignmentViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>StudentAssignmentViewModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Assignment.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Assignment.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Assignment.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Assignment.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Assignment.PublishedDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Assignment.PublishedDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Assignment.Deadline)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Assignment.Deadline)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.File)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.File != null)
+            {
+                <a asp-action="DownloadFile" asp-route-id="@Model.Id">Download File</a>
+            }
+            else { 
+                @Html.DisplayFor(model => model.File)
+            }
+
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Submitted)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Submitted)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (Model.Submitted == false)
+    {
+        <a asp-action="SubmitAction" asp-route-id="@Model.Id">Submit</a>
+    }|
+    <a asp-controller="Comments" asp-action="Create">Add Comment</a>
+    |
+    <a asp-controller="Comments" asp-action="Index" asp-route-id="@Model.Id">All Comments</a>
+    |
+    <a asp-action="Index">Back to List</a>
+</div>

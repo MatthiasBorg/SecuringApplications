@@ -22,7 +22,7 @@ namespace WebApplication.Controllers
             _teachersService = teachersService;
             _studentsService = studentsService;
             _studentAssignmentsService = studentAssignmentsService;
-    }
+        }
 
         // GET: AssignmentsController
         [Authorize(Roles = "Teacher")]
@@ -57,7 +57,9 @@ namespace WebApplication.Controllers
                 newAssignment.Teacher = teacher;
                 DateTime deadlineAsDate = DateTime.Parse(newAssignment.Deadline);
 
-                if (deadlineAsDate < DateTime.Now)
+                int result = DateTime.Compare(DateTime.Now.Date, DateTime.Parse(newAssignment.Deadline).Date);
+
+                    if (DateTime.Parse(newAssignment.Deadline).Date < DateTime.Now.Date)
                 {
                     TempData["warning"] = "Assignment Was Not Created - Deadline Date Was In The Past";
                     return View();
