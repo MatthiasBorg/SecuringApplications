@@ -49,9 +49,9 @@ namespace ShoppingCart.Application.Services
             return newStudentAssignment.Id;
         }
 
-        public bool SubmitAssignment(string filePath, Guid id)
+        public bool SubmitAssignment(string filePath, Guid id, String signiture, String publicKey)
         {
-            _studentAssignmentsRepo.SubmitAssignment(filePath, id);
+            _studentAssignmentsRepo.SubmitAssignment(filePath, id, signiture, publicKey);
             return true;
         }
     }

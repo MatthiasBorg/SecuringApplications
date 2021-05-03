@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ShoppingCart.IOC;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SecuringApps_WebApplication
 {
@@ -36,6 +37,9 @@ namespace SecuringApps_WebApplication
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
+
+            services.AddMvc(options =>
+                options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(

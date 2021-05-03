@@ -39,13 +39,15 @@ namespace ShoppingCart.Data.Repositories
             return sa.Id;
         }
 
-        public bool SubmitAssignment(string filePath, Guid id)
+        public bool SubmitAssignment(string filePath, Guid id, String signiture, String publicKey)
         {
             //throw new NotImplementedException();
 
             var assignemnt = GetStudentAssignment(id);
             assignemnt.File = filePath;
             assignemnt.Submitted = !assignemnt.Submitted;
+            assignemnt.Signiture = signiture;
+            assignemnt.PubicKey = publicKey;
             _context.StudentAssignments.Update(assignemnt);
             _context.SaveChanges();
 

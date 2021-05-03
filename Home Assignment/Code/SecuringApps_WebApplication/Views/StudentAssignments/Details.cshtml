@@ -40,7 +40,7 @@
         <dd class="col-sm-10">
             @if (Model.File != null)
             {
-                <a asp-action="DownloadFile" asp-route-id="@Model.Id">Download File</a>
+                <a asp-action="DownloadFile" asp-route-id="@Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(Model.Id.ToString()))">Download File</a>
             }
             else { 
                 @Html.DisplayFor(model => model.File)
@@ -58,11 +58,11 @@
 <div>
     @if (Model.Submitted == false)
     {
-        <a asp-action="SubmitAction" asp-route-id="@Model.Id">Submit</a>
+        <a asp-action="SubmitAction" asp-route-id="@Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(Model.Id.ToString()))">Submit</a>
     }|
     <a asp-controller="Comments" asp-action="Create">Add Comment</a>
     |
-    <a asp-controller="Comments" asp-action="Index" asp-route-id="@Model.Id">All Comments</a>
+    <a asp-controller="Comments" asp-action="Index" asp-route-id="@Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(Model.Id.ToString()))">All Comments</a>
     |
     <a asp-action="Index">Back to List</a>
 </div>

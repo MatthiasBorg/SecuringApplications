@@ -16,6 +16,6 @@ namespace ShoppingCart.Domain.Interfaces
 
         Guid AddStudentAssignment(StudentAssignment sa);
 
-        bool SubmitAssignment(String filePath, Guid id);
+        bool SubmitAssignment(String filePath, Guid id, string signiture, string publicKey);
     }
 }

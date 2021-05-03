@@ -18,6 +18,10 @@ namespace ShoppingCart.Domain.Models
         [DefaultValue(false)]
         public bool Submitted { get; set; }
 
+        public String Signiture { get; set; }
+
+        public String PubicKey { get; set; }
+
         [ForeignKey("Student")]
         public Guid StudentId { get; set; }
         public virtual Student Student { get; set; }

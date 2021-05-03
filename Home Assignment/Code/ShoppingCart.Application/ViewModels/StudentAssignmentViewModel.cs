@@ -12,6 +12,10 @@ namespace ShoppingCart.Application.ViewModels
         
         public string File { get; set; }
 
+        public String Signiture { get; set; }
+
+        public String PubicKey { get; set; }
+
         [Required(ErrorMessage = "Please Enter If Was Submitted")]
         public bool Submitted { get; set; }
         

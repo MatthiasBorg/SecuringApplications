@@ -33,9 +33,11 @@ namespace WebApplication.Controllers
         }
 
         // GET: CommentsController
-        public ActionResult Index(Guid id)
+        public ActionResult Index(String id)
         {
-            return View(_commentsService.GetCommentsByAssignment(id));
+            byte[] encoded = Convert.FromBase64String(id);
+            Guid realId = new Guid(System.Text.Encoding.UTF8.GetString(encoded));
+            return View(_commentsService.GetCommentsByAssignment(realId));
         }
 
         // GET: CommentsController/Create
@@ -70,7 +72,7 @@ namespace WebApplication.Controllers
 
                 comment.Timestamp = DateTime.Now;
                 _commentsService.AddComment(comment);
-                return RedirectToAction($"Index", new { id = id });
+                return RedirectToAction($"Index", new { id = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(id.ToString())) });
             }
             catch
             {

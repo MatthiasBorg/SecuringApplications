@@ -15,6 +15,6 @@ namespace ShoppingCart.Application.Interfaces
 
         Guid AddStudentAssignment(StudentAssignmentViewModel sa);
 
-        bool SubmitAssignment(String filePath, Guid id);
+        bool SubmitAssignment(String filePath, Guid id, String signiture, String publicKey);
     }
 }

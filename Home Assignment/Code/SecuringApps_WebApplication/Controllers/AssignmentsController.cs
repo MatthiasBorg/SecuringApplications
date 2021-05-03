@@ -33,9 +33,11 @@ namespace WebApplication.Controllers
         }
 
         // GET: AssignmentsController/Details/5
-        public ActionResult Details(Guid id)
+        public ActionResult Details(String id)
         {
-            return View(_assignmentsService.GetAssignment(id));
+            byte[] encoded = Convert.FromBase64String(id);
+            Guid realId = new Guid(System.Text.Encoding.UTF8.GetString(encoded));
+            return View(_assignmentsService.GetAssignment(realId));
         }
 
         // GET: AssignmentsController/Create
