@@ -70,16 +70,16 @@ namespace ShoppingCart.Application.Helpers
         }
 
 
-        public static string SymmetricEncrypt(string plainTextMessage)
-        {
+        //public static string SymmetricEncrypt(string plainTextMessage)
+        //{
 
-            byte[] messageAsBytes = Encoding.UTF32.GetBytes(plainTextMessage);
+        //    byte[] messageAsBytes = Encoding.UTF32.GetBytes(plainTextMessage);
 
-            byte[] cipherAsBytes = SymmetricEncrypt(messageAsBytes);
+        //    byte[] cipherAsBytes = SymmetricEncrypt(messageAsBytes);
 
-            return Convert.ToBase64String(cipherAsBytes);
-        }
-        public static byte[] SymmetricEncrypt(byte[] plainTextMessage)
+        //    return Convert.ToBase64String(cipherAsBytes);
+        //}
+        public static byte[] SymmetricEncrypt(byte[] plainTextMessage, Tuple<byte[], byte[]>  _keyIVPair)
         {
             Aes aes = Aes.Create();
             aes.Padding = PaddingMode.PKCS7;
@@ -118,15 +118,15 @@ namespace ShoppingCart.Application.Helpers
             }
         }
 
-        public static string SymmetricDecrypt(string cipherText)
-        {
-            byte[] cipherTextAsBytes = Convert.FromBase64String(cipherText);
+        //public static string SymmetricDecrypt(string cipherText)
+        //{
+        //    byte[] cipherTextAsBytes = Convert.FromBase64String(cipherText);
 
-            byte[] plainTextAsBytes = SymmetricDecrypt(cipherTextAsBytes);
+        //    byte[] plainTextAsBytes = SymmetricDecrypt(cipherTextAsBytes);
 
-            return Encoding.UTF32.GetString(plainTextAsBytes);
-        }
-        public static byte[] SymmetricDecrypt(byte[] encryptedMessage)
+        //    return Encoding.UTF32.GetString(plainTextAsBytes);
+        //}
+        public static byte[] SymmetricDecrypt(byte[] encryptedMessage, Tuple<byte[], byte[]>  _keyIVPair)
         {
             Aes aes = Aes.Create();
             aes.Padding = PaddingMode.PKCS7;
@@ -156,7 +156,7 @@ namespace ShoppingCart.Application.Helpers
             }
         }
 
-        static Tuple<byte[], byte[]> GenerateKeys()
+        public static Tuple<byte[], byte[]> GenerateKeys()
         {
             Aes aes = Aes.Create();
 
@@ -185,6 +185,11 @@ namespace ShoppingCart.Application.Helpers
 
         public static byte[] AsymetricEncrypt(byte[] data, string publicKey)
         {
+            //byte[] hash;
+            //using (SHA1 sHA1 = SHA1.Create()) {
+            //    hash = sHA1.ComputeHash(data);
+            //}
+
             RSACryptoServiceProvider provider = new RSACryptoServiceProvider();
             provider.FromXmlString(publicKey);
 
@@ -194,14 +199,21 @@ namespace ShoppingCart.Application.Helpers
 
         public static byte[] AsymmetricDecrypt(byte[] data, string privateKey)
         {
+            //byte[] hash;
+            //using (SHA1 sHA1 = SHA1.Create())
+            //{
+            //    hash = sHA1.ComputeHash(data);
+            //}
+
             RSACryptoServiceProvider provider = new RSACryptoServiceProvider();
             provider.FromXmlString(privateKey);
 
             byte[] cipher = provider.Decrypt(data, RSAEncryptionPadding.Pkcs1);
+
             return cipher;
         }
 
-        public static string CreateSigniture(byte[] data, string privateKey) {
+        public static byte[] CreateSigniture(byte[] data, string privateKey) {
             RSA rsa = RSA.Create();
             rsa.FromXmlString(privateKey);
 
@@ -217,7 +229,9 @@ namespace ShoppingCart.Application.Helpers
 
             byte[] signedHashValue = signitureFormatter.CreateSignature(hash);
 
-            return Convert.ToBase64String(signedHashValue);
+            return signedHashValue;
+
+            //return Convert.ToBase64String(signedHashValue);
             
             
             //ToBase64Transform(signedHashValue);
@@ -229,7 +243,7 @@ namespace ShoppingCart.Application.Helpers
             //return Convert.ToBase64String(signature);
         }
 
-        public static bool VerifySigniture(byte[] data, string signatureBase64, string publicKey)
+        public static bool VerifySigniture(byte[] data, byte[] signature, string publicKey)
         {
             //RSA rsa = RSA.Create();
             //rsa.ImportParameters(rsaKeyInfo);
@@ -248,7 +262,7 @@ namespace ShoppingCart.Application.Helpers
             RSA rsa = RSA.Create();
             rsa.FromXmlString(publicKey);
 
-            byte[] signature = Convert.FromBase64String(signatureBase64);
+            //byte[] signature = Convert.FromBase64String(signatureBase64);
 
             RSAPKCS1SignatureDeformatter rsaDeformatter = new RSAPKCS1SignatureDeformatter(rsa);
             rsaDeformatter.SetHashAlgorithm("SHA1");

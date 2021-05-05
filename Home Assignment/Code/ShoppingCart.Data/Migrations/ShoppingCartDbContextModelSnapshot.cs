@@ -132,7 +132,16 @@ namespace ShoppingCart.Data.Migrations
                     b.Property<string>("File")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PubicKey")
+                    b.Property<string>("Iv")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Key")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrivateKey")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PublicKey")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Signiture")

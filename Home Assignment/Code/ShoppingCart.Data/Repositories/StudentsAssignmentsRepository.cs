@@ -39,7 +39,7 @@ namespace ShoppingCart.Data.Repositories
             return sa.Id;
         }
 
-        public bool SubmitAssignment(string filePath, Guid id, String signiture, String publicKey)
+        public bool SubmitAssignment(string filePath, Guid id, String signiture, String publicKey, String privateKey, String key, String Iv)
         {
             //throw new NotImplementedException();
 
@@ -47,7 +47,10 @@ namespace ShoppingCart.Data.Repositories
             assignemnt.File = filePath;
             assignemnt.Submitted = !assignemnt.Submitted;
             assignemnt.Signiture = signiture;
-            assignemnt.PubicKey = publicKey;
+            assignemnt.PublicKey = publicKey;
+            assignemnt.PrivateKey = privateKey;
+            assignemnt.Key = key;
+            assignemnt.Iv = Iv;
             _context.StudentAssignments.Update(assignemnt);
             _context.SaveChanges();
 

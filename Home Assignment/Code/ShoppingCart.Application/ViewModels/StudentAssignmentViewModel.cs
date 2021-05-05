@@ -14,7 +14,13 @@ namespace ShoppingCart.Application.ViewModels
 
         public String Signiture { get; set; }
 
-        public String PubicKey { get; set; }
+        public String PublicKey { get; set; }
+
+        public String PrivateKey { get; set; }
+
+        public String Key { get; set; }
+
+        public String Iv { get; set; }
 
         [Required(ErrorMessage = "Please Enter If Was Submitted")]
         public bool Submitted { get; set; }
