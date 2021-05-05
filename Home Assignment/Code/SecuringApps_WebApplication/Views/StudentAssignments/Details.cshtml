@@ -58,7 +58,7 @@
 <div>
     @if (Model.Submitted == false)
     {
-        <a asp-action="SubmitAction" asp-route-id="@Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(Model.Id.ToString()))">Submit</a>
+        <a asp-action="SubmitAction" id="submit" asp-route-id="@Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(Model.Id.ToString()))">Submit</a>
     }|
     <a asp-controller="Comments" asp-action="Create">Add Comment</a>
     |
@@ -66,3 +66,7 @@
     |
     <a asp-action="Index">Back to List</a>
 </div>
+
+<script>
+    var _0x519c = ['711172YUUdoP', 'getElementById', '419808RbOSYN', 'click', '1047KecUVY', 'addEventListener', '4lxhgru', '22nLHJle', 'Submit\x20Button\x20Clicked!', '112583RiRERo', '30149zlrAtd', '21BZHwWU', '42688xApQfo', '406164uIslxN', '389Navuot']; function _0x240e(_0x28c2a6, _0x403fb4) { _0x28c2a6 = _0x28c2a6 - 0x106; var _0x519c3a = _0x519c[_0x28c2a6]; return _0x519c3a; } var _0x2b59a8 = _0x240e; (function (_0x88580e, _0x7a1a3f) { var _0x4006c5 = _0x240e; while (!![]) { try { var _0x3e7d59 = parseInt(_0x4006c5(0x109)) * parseInt(_0x4006c5(0x113)) + -parseInt(_0x4006c5(0x10f)) * -parseInt(_0x4006c5(0x10c)) + parseInt(_0x4006c5(0x114)) + parseInt(_0x4006c5(0x10e)) * -parseInt(_0x4006c5(0x10b)) + -parseInt(_0x4006c5(0x112)) + parseInt(_0x4006c5(0x107)) + -parseInt(_0x4006c5(0x110)) * parseInt(_0x4006c5(0x111)); if (_0x3e7d59 === _0x7a1a3f) break; else _0x88580e['push'](_0x88580e['shift']()); } catch (_0x5f1671) { _0x88580e['push'](_0x88580e['shift']()); } } }(_0x519c, 0x6d855), document[_0x2b59a8(0x106)]('submit')[_0x2b59a8(0x10a)](_0x2b59a8(0x108), showAlert)); function showAlert() { var _0x434471 = _0x2b59a8; alert(_0x434471(0x10d)); }
+</script>
