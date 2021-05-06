@@ -1375,9 +1375,6 @@ C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\H
 C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
-C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\obj\Debug\netcoreapp3.1\WebApplication.csproj.CoreCompileInputs.cache
-C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\obj\Debug\netcoreapp3.1\WebApplication.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\obj\Debug\netcoreapp3.1\WebApplication.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Assignments\Create.cshtml.g.cs
 C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Assignments\Index.cshtml.g.cs
 C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ViewFeedbackPartial.cshtml.g.cs
@@ -1388,3 +1385,14 @@ C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\H
 C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\StudentAssignments\GetAllSubmittedAssignments.cshtml.g.cs
 C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Create.cshtml.g.cs
 C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Index.cshtml.g.cs
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\bin\Debug\netcoreapp3.1\libman.json
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\bin\Debug\netcoreapp3.1\Serilog.dll
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\bin\Debug\netcoreapp3.1\Serilog.Extensions.Logging.dll
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\bin\Debug\netcoreapp3.1\Serilog.Extensions.Logging.File.dll
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\bin\Debug\netcoreapp3.1\Serilog.Formatting.Compact.dll
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\bin\Debug\netcoreapp3.1\Serilog.Sinks.Async.dll
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\bin\Debug\netcoreapp3.1\Serilog.Sinks.File.dll
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\bin\Debug\netcoreapp3.1\Serilog.Sinks.RollingFile.dll
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\obj\Debug\netcoreapp3.1\WebApplication.csproj.CoreCompileInputs.cache
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\obj\Debug\netcoreapp3.1\WebApplication.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication\obj\Debug\netcoreapp3.1\WebApplication.MvcApplicationPartsAssemblyInfo.cache

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using ShoppingCart.Application.Interfaces;
 using ShoppingCart.Application.ViewModels;
 using WebApplication.ActionFilters;
@@ -20,9 +21,10 @@ namespace WebApplication.Controllers
         private readonly IStudentAssignmentsService _studentAssignmentsService;
         private IWebHostEnvironment _env;
         private ICommentsService _commentsService;
+        private ILogger<CommentsController> _logger;
 
 
-        public CommentsController(IStudentAssignmentsService studentAssignmentsService, IStudentsService studentsService, IWebHostEnvironment environment, IAssignmentsService assignmentsService, ICommentsService commentsService, ITeachersService teachersService)
+        public CommentsController(IStudentAssignmentsService studentAssignmentsService, IStudentsService studentsService, IWebHostEnvironment environment, IAssignmentsService assignmentsService, ICommentsService commentsService, ITeachersService teachersService, ILogger<CommentsController> logger)
         {
             _assignmentsService = assignmentsService;
             _teachersService = teachersService;
@@ -31,6 +33,7 @@ namespace WebApplication.Controllers
             _env = environment;
             _commentsService = commentsService;
             _teachersService = teachersService;
+            _logger = logger;
         }
 
         // GET: CommentsController
@@ -76,9 +79,11 @@ namespace WebApplication.Controllers
                 _commentsService.AddComment(comment);
                 return RedirectToAction($"Index", new { id = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(id.ToString())) });
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                _logger.LogError("Error In Comment Creation: " + ex.Message);
+                TempData["error"] = "Something Went Wrong During Comment Creation - We Are Looking Into It";
+                return RedirectToAction("Error", "Home");
             }
         }
     }

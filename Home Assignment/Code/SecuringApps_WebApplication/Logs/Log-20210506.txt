@@ -1,0 +1,4 @@
+2021-05-06T17:38:27.3646079+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-05-06T17:38:27.3738266+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-05-06T17:38:27.3756864+02:00  [INF] Content root path: "C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication" (b5d60022)
+2021-05-06T17:38:37.9718644+02:00 80000014-0003-fc00-b63f-84710c7967bb [INF] Trying to See Assignment Details (0c943c4c)

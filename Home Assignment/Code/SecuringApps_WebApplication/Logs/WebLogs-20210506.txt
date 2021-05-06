@@ -1,0 +1,4 @@
+2021-05-06T19:05:53.8175713+02:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-05-06T19:05:53.8437056+02:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-05-06T19:05:53.8459042+02:00  [INF] Content root path: "C:\Users\borgm\Documents\Git Repos\Securing Applications\Securing-Applications\Home Assignment\Code\SecuringApps_WebApplication" (b5d60022)
+2021-05-06T19:06:07.8639502+02:00 80000016-0003-fc00-b63f-84710c7967bb [INF] User borgm09@gmail.com Tried To Download File - Time: 06/05/2021 07:06:07 PM - IP Address: ::1 (13631653)

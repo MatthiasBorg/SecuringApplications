@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using ShoppingCart.Application.Helpers;
 using ShoppingCart.Application.Interfaces;
 using ShoppingCart.Application.ViewModels;
@@ -25,15 +26,16 @@ namespace WebApplication.Controllers
         private readonly IStudentsService _studentsService;
         private readonly IStudentAssignmentsService _studentAssignmentsService;
         private IWebHostEnvironment _env;
+        private readonly ILogger<StudentAssignmentsController> _logger;
 
-
-        public StudentAssignmentsController( IStudentAssignmentsService studentAssignmentsService, IStudentsService studentsService, IWebHostEnvironment environment, IAssignmentsService assignmentsService)
+        public StudentAssignmentsController( IStudentAssignmentsService studentAssignmentsService, IStudentsService studentsService, IWebHostEnvironment environment, IAssignmentsService assignmentsService, ILogger<StudentAssignmentsController> logger)
         {
             _assignmentsService = assignmentsService;
             //_teachersService = teachersService;
             _studentsService = studentsService;
             _studentAssignmentsService = studentAssignmentsService;
             _env = environment;
+            _logger = logger;
         }
 
         // GET: StudentAssignmentsController
@@ -51,6 +53,7 @@ namespace WebApplication.Controllers
         {
             byte[] encoded = Convert.FromBase64String(id);
             Guid realId = new Guid(System.Text.Encoding.UTF8.GetString(encoded));
+            //_logger.LogInformation("Trying to See Assignment Details");
             HttpContext.Session.SetString("StudentAssignment", id.ToString());
             return View(_studentAssignmentsService.GetStudentAssignment(realId));
         }
@@ -71,6 +74,7 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SubmitAction(StudentAssignmentViewModel studentAssignment, IFormFile f)
         {
+            _logger.LogInformation($"User {User.Identity.Name} Tried To Download File - Time: {DateTime.Now} - IP Address: {HttpContext.Connection.RemoteIpAddress}");
             try
             {
                 var assignment = _studentAssignmentsService.GetStudentAssignment(studentAssignment.Id).Assignment;
@@ -79,7 +83,8 @@ namespace WebApplication.Controllers
 
                 if (DateTime.Parse(assignment.Deadline).Date < DateTime.Now.Date) {
                     TempData["warning"] = "Assignment not submitted as deadline was exceeded";
-                    return View(_studentAssignmentsService.GetStudentAssignment(studentAssignment.Id));
+                    return RedirectToAction("Details", new { id = _studentAssignmentsService.GetStudentAssignment(studentAssignment.Id) });
+                    //return View(_studentAssignmentsService.GetStudentAssignment(studentAssignment.Id));
                 }
 
                 if (f != null)
@@ -187,12 +192,14 @@ namespace WebApplication.Controllers
             }
             catch (Exception ex)
             {
-                //log error
-                //_logger.LogError(ex.Message);
                 TempData["warning"] = "Subbmittion was not added!";
+                //log error
+                _logger.LogError("Error During Submission: " + ex.Message);
+                TempData["error"] = "Something Went Wrong During Submission - We Are Looking Into It";
+                return RedirectToAction("Error", "Home");
             }
 
-            return View(_studentAssignmentsService.GetStudentAssignment(studentAssignment.Id));
+            return RedirectToAction("Details", new { id = _studentAssignmentsService.GetStudentAssignment(studentAssignment.Id) });//View(_studentAssignmentsService.GetStudentAssignment(studentAssignment.Id));
         }
 
         // post: studentassignmentscontroller/edit/5
@@ -201,7 +208,7 @@ namespace WebApplication.Controllers
         [AuthorizationFilter]
         public IActionResult DownloadFile(String id)
         {
-
+            _logger.LogInformation($"User {User.Identity.Name} Tried To Download File - Time: {DateTime.Now} - IP Address: {HttpContext.Connection.RemoteIpAddress}");
             byte[] encoded = Convert.FromBase64String(id);
             Guid realId = new Guid(System.Text.Encoding.UTF8.GetString(encoded));
 
@@ -224,7 +231,7 @@ namespace WebApplication.Controllers
 
             if (isValid == false)
             {
-                TempData["warning"] = "This Assignment Has Been Temepered With!";
+                TempData["warning"] = "This Assignment Has Been Temepered With! It Cannot Be Downloaded!";
                 return RedirectToAction("Details", new { id = id });
             }
 
@@ -242,7 +249,7 @@ namespace WebApplication.Controllers
 
                 if (fileBytes.SequenceEqual(fileBytesOthers))
                 {
-                    TempData["warning"] = "You Are Downloading A Copied Assignment!";
+                    TempData["warning"] = "This Is A Copied Assignment! It Cannot Be Downloaded!";
                     return RedirectToAction("Details", new { id = id });
                 }
             }

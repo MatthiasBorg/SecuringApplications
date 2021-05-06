@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using ShoppingCart.Application.Interfaces;
 using ShoppingCart.Application.ViewModels;
 
@@ -16,12 +17,14 @@ namespace WebApplication.Controllers
         private readonly ITeachersService _teachersService;
         private readonly IStudentsService _studentsService;
         private readonly IStudentAssignmentsService _studentAssignmentsService;
+        private readonly ILogger<AssignmentsController> _logger;
 
-        public AssignmentsController(IAssignmentsService assignmentsService, ITeachersService teachersService, IStudentsService studentsService, IStudentAssignmentsService studentAssignmentsService) {
+        public AssignmentsController(IAssignmentsService assignmentsService, ITeachersService teachersService, IStudentsService studentsService, IStudentAssignmentsService studentAssignmentsService, ILogger<AssignmentsController> logger) {
             _assignmentsService = assignmentsService;
             _teachersService = teachersService;
             _studentsService = studentsService;
             _studentAssignmentsService = studentAssignmentsService;
+            _logger = logger;
         }
 
         // GET: AssignmentsController
@@ -80,10 +83,14 @@ namespace WebApplication.Controllers
                 TempData["feedback"] = "Assignment Was Created Successfully";
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
-                TempData["warning"] = "Assignment Was Not Created";
-                return View();
+                //TempData["warning"] = "Assignment Was Not Created";
+                //return View();
+
+                _logger.LogError("Error In Assignment Creation: " + ex.Message);
+                TempData["error"] = "Something Went Wrong During Assignment Creation - We Are Looking Into It";
+                return RedirectToAction("Error", "Home");
             }
         }
 
@@ -106,47 +113,5 @@ namespace WebApplication.Controllers
                 }
             }
         }
-
-        //// GET: AssignmentsController/Edit/5
-        //public ActionResult Edit(int id)
-        //{
-        //    return View();
-        //}
-
-        //// POST: AssignmentsController/Edit/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-        //// GET: AssignmentsController/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
-
-        //// POST: AssignmentsController/Delete/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Delete(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
     }
 }
