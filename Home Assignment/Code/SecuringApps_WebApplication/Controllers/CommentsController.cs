@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingCart.Application.Interfaces;
 using ShoppingCart.Application.ViewModels;
+using WebApplication.ActionFilters;
 
 namespace WebApplication.Controllers
 {
@@ -33,6 +34,7 @@ namespace WebApplication.Controllers
         }
 
         // GET: CommentsController
+        [AuthorizationFilter]
         public ActionResult Index(String id)
         {
             byte[] encoded = Convert.FromBase64String(id);

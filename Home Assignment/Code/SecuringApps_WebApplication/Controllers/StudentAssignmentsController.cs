@@ -12,6 +12,7 @@ using ShoppingCart.Application.Helpers;
 using ShoppingCart.Application.Interfaces;
 using ShoppingCart.Application.ViewModels;
 using ShoppingCart.Data.Context;
+using WebApplication.ActionFilters;
 
 namespace WebApplication.Controllers
 {
@@ -45,6 +46,7 @@ namespace WebApplication.Controllers
 
         [Authorize(Roles = "Teacher, Student")]
         // GET: StudentAssignmentsController/Details/5
+        [AuthorizationFilter]
         public ActionResult Details(String id)
         {
             byte[] encoded = Convert.FromBase64String(id);
@@ -196,6 +198,7 @@ namespace WebApplication.Controllers
         // post: studentassignmentscontroller/edit/5
         [HttpGet]
         [Authorize(Roles = "Teacher, Student")]
+        [AuthorizationFilter]
         public IActionResult DownloadFile(String id)
         {
 
