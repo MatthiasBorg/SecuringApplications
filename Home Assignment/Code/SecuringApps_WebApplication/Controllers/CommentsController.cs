@@ -73,8 +73,8 @@ namespace WebApplication.Controllers
                 }
 
                 string strId = HttpContext.Session.GetString("StudentAssignment");
-
-                Guid id = new Guid(strId);
+                byte[] encoded = Convert.FromBase64String(strId);
+                Guid id = new Guid(System.Text.Encoding.UTF8.GetString(encoded));
 
                 var studentAssignment = _studentAssignmentsService.GetStudentAssignment(id);
                 comment.StudentAssignment = studentAssignment;

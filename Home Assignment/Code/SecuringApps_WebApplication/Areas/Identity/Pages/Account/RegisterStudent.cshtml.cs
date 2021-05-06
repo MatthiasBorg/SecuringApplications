@@ -112,7 +112,7 @@ namespace SecuringApps_WebApplication.Areas.Identity.Pages.Account
                     newStudent.Id = new Guid(user.Id);
                     newStudent.Email = Input.Email;
                     newStudent.FirstName = Input.Name;
-                    newStudent.LastName = Input.Name;
+                    newStudent.LastName = Input.LastName;
                     newStudent.Password = user.PasswordHash;
                     string asdasd = User.FindFirst(ClaimTypes.NameIdentifier).Value;
                     newStudent.Teacher = teacher;

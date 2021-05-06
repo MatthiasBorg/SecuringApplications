@@ -87,8 +87,8 @@ namespace WebApplication.Controllers
 
                 if (DateTime.Parse(assignment.Deadline).Date < DateTime.Now.Date) {
                     TempData["warning"] = "Assignment not submitted as deadline was exceeded";
-                    return RedirectToAction("Details", new { id = _studentAssignmentsService.GetStudentAssignment(studentAssignment.Id) });
-                    //return View(_studentAssignmentsService.GetStudentAssignment(studentAssignment.Id));
+                    //return RedirectToAction("Details", new { id = _studentAssignmentsService.GetStudentAssignment(studentAssignment.Id) });
+                    return View(_studentAssignmentsService.GetStudentAssignment(studentAssignment.Id));
                 }
 
                 if (f != null)
@@ -203,7 +203,8 @@ namespace WebApplication.Controllers
                 return RedirectToAction("Error", "Home");
             }
 
-            return RedirectToAction("Details", new { id = _studentAssignmentsService.GetStudentAssignment(studentAssignment.Id) });//View(_studentAssignmentsService.GetStudentAssignment(studentAssignment.Id));
+            //return RedirectToAction("Details", new { id = _studentAssignmentsService.GetStudentAssignment(studentAssignment.Id) });//View(_studentAssignmentsService.GetStudentAssignment(studentAssignment.Id));
+            return RedirectToAction("Details", new { id = _studentAssignmentsService.GetStudentAssignment(studentAssignment.Id) });
         }
 
         // post: studentassignmentscontroller/edit/5
@@ -247,9 +248,9 @@ namespace WebApplication.Controllers
                 var keyOthers = CryptographicHelper.AsymmetricDecrypt(Convert.FromBase64String(studentAssignmentByStudent.Key), studentAssignmentByStudent.PrivateKey);
                 var ivOthers = CryptographicHelper.AsymmetricDecrypt(Convert.FromBase64String(studentAssignmentByStudent.Iv), studentAssignmentByStudent.PrivateKey);
 
-                Tuple<byte[], byte[]> keyPairOthers = new Tuple<byte[], byte[]>(key, iv);
+                Tuple<byte[], byte[]> keyPairOthers = new Tuple<byte[], byte[]>(keyOthers, ivOthers);
 
-                var fileBytesOthers = CryptographicHelper.SymmetricDecrypt(bytesEncOthers, keyPair);
+                var fileBytesOthers = CryptographicHelper.SymmetricDecrypt(bytesEncOthers, keyPairOthers);
 
                 if (fileBytes.SequenceEqual(fileBytesOthers))
                 {

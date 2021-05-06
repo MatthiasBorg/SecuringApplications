@@ -63,8 +63,6 @@
     <a asp-controller="Comments" asp-action="Create">Add Comment</a>
     |
     <a asp-controller="Comments" asp-action="Index" asp-route-id="@Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(Model.Id.ToString()))">All Comments</a>
-    |
-    <a asp-action="Index">Back to List</a>
 </div>
 
 <script>
