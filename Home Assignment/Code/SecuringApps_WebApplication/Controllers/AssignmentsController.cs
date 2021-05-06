@@ -32,6 +32,7 @@ namespace WebApplication.Controllers
         public ActionResult Index()
         {
             var teacher = _teachersService.GetTeacherByEmail(User.Identity.Name);
+            _logger.LogInformation($"User {User.Identity.Name} Accessed All Assignments - Time: {DateTime.Now} - IP Address: {HttpContext.Connection.RemoteIpAddress}");
             return View(_assignmentsService.GetAssignmentsByTeacher(teacher.Id));
         }
 
@@ -40,6 +41,9 @@ namespace WebApplication.Controllers
         {
             byte[] encoded = Convert.FromBase64String(id);
             Guid realId = new Guid(System.Text.Encoding.UTF8.GetString(encoded));
+
+            _logger.LogInformation($"User {User.Identity.Name} Tried To Access Assignment With Id: {realId} - Time: {DateTime.Now} - IP Address: {HttpContext.Connection.RemoteIpAddress}");
+
             return View(_assignmentsService.GetAssignment(realId));
         }
 
@@ -47,6 +51,7 @@ namespace WebApplication.Controllers
         [Authorize(Roles = "Teacher")]
         public ActionResult Create()
         {
+            _logger.LogInformation($"User {User.Identity.Name} Accessed Create An Assignment - Time: {DateTime.Now} - IP Address: {HttpContext.Connection.RemoteIpAddress}");
             return View();
         }
 
@@ -96,6 +101,8 @@ namespace WebApplication.Controllers
 
         private void CreateStudentAssignments(IQueryable<StudentViewModel> students, AssignmentViewModel createdAssignment)
         {
+            _logger.LogInformation($"User {User.Identity.Name} Assigning Student To Assignment - Time: {DateTime.Now} - IP Address: {HttpContext.Connection.RemoteIpAddress}");
+
             IList<StudentViewModel> studentsList = students.ToList();
 
             foreach (var student in studentsList)

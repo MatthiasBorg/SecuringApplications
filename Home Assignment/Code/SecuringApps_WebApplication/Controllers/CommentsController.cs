@@ -42,12 +42,16 @@ namespace WebApplication.Controllers
         {
             byte[] encoded = Convert.FromBase64String(id);
             Guid realId = new Guid(System.Text.Encoding.UTF8.GetString(encoded));
+
+            _logger.LogInformation($"User {User.Identity.Name} Accessed Comment For Assignemt With Id: {realId} - Time: {DateTime.Now} - IP Address: {HttpContext.Connection.RemoteIpAddress}");
+
             return View(_commentsService.GetCommentsByAssignment(realId));
         }
 
         // GET: CommentsController/Create
         public ActionResult Create()
         {
+            _logger.LogInformation($"User {User.Identity.Name} Tried To Create Comment - Time: {DateTime.Now} - IP Address: {HttpContext.Connection.RemoteIpAddress}");
             return View();
         }
 

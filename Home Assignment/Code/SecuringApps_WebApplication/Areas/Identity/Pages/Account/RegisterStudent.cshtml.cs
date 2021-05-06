@@ -73,16 +73,7 @@ namespace SecuringApps_WebApplication.Areas.Identity.Pages.Account
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            // [Required]
-            // [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
-            // [DataType(DataType.Password)]
-            // [Display(Name = "Password")]
             public string Password { get; set; }
-            //
-            // [DataType(DataType.Password)]
-            // [Display(Name = "Confirm password")]
-            // [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-            // public string ConfirmPassword { get; set; }
 
             [Required]
             public string Address { get; set; }
@@ -91,13 +82,11 @@ namespace SecuringApps_WebApplication.Areas.Identity.Pages.Account
         public async Task OnGetAsync(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
-            //ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
-            //ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
                 
@@ -114,28 +103,9 @@ namespace SecuringApps_WebApplication.Areas.Identity.Pages.Account
                         ModelState.AddModelError("",
                             "Error while allocating role!");
                     }
-                    
-                    // var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    // code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    // var callbackUrl = Url.Page(
-                    //     "/Account/ConfirmEmail",
-                    //     pageHandler: null,
-                    //     values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
-                    //     protocol: Request.Scheme);
 
-                    // await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                    //     $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-                    
-                    // SmtpClient client=new SmtpClient("smtp.live.com", 587);
-                    // client.Credentials = new System.Net.NetworkCredential("applicationtestuser123@outlook.com", "HXQszjlQ8E2k");
-                    // client.EnableSsl = true;
-                    // // smtpClient.UseDefaultCredentials = true; // uncomment if you don't want to use the network credentials
-                    // client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    //
-                    // client.Send("applicationtestuser123@outlook.com",user.Email,
-                    //     "Confirm your email",
-                    //     $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-                    
+                    _logger.LogInformation($"User {User.Identity.Name} Added A Student - Time: {DateTime.Now} - IP Address: {HttpContext.Connection.RemoteIpAddress}");
+
                     // add student
                     TeacherViewModel teacher = _teachersService.GetTeacherByEmail(User.Identity.Name);
                     StudentViewModel newStudent = new StudentViewModel();
@@ -158,36 +128,6 @@ namespace SecuringApps_WebApplication.Areas.Identity.Pages.Account
                     EmailHelper emailHelper = new EmailHelper(newStudent.Email, emailSubject, emailBody);
                     
                     emailHelper.SendEmail();
-                    
-                    
-                    // SmtpClient smtpClient = new SmtpClient("smtp.live.com", 587);
-                    //
-                    // smtpClient.Credentials = new System.Net.NetworkCredential("applicationtestuser123@outlook.com", "HXQszjlQ8E2k");
-                    // // smtpClient.UseDefaultCredentials = true; // uncomment if you don't want to use the network credentials
-                    // smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    // smtpClient.EnableSsl = true;
-                    // MailMessage mail = new MailMessage();
-                    //
-                    // //Setting From , To and CC
-                    // mail.From = new MailAddress("applicationtestuser123@outlook.com", "SA_Secure Website");
-                    // mail.To.Add(new MailAddress(newStudent.Email));
-                    // mail.Body = emailBody;
-                    // mail.Subject = emailSubject;
-                    //
-                    // smtpClient.Send(mail);
-                    
-
-                    // if (_userManager.Options.SignIn.RequireConfirmedAccount)
-                    // {
-                    //     return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
-                    // }
-                    // else
-                    // {
-                    //     await _signInManager.SignInAsync(user, isPersistent: false);
-                    //     return LocalRedirect(returnUrl);
-                    // }
-
-                    //return RedirectToPage("Home");
                 }
                 foreach (var error in result.Errors)
                 {

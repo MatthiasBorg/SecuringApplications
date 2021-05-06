@@ -42,6 +42,7 @@ namespace WebApplication.Controllers
         [Authorize(Roles = "Teacher, Student")]
         public ActionResult Index()
         {
+            _logger.LogInformation($"User {User.Identity.Name} Accessed All Assignments For Student - Time: {DateTime.Now} - IP Address: {HttpContext.Connection.RemoteIpAddress}");
             var student = _studentsService.GetStudentByEmail(User.Identity.Name);
             return View(_studentAssignmentsService.GetStudentAssignmentsById(student.Id));
         }
@@ -53,6 +54,9 @@ namespace WebApplication.Controllers
         {
             byte[] encoded = Convert.FromBase64String(id);
             Guid realId = new Guid(System.Text.Encoding.UTF8.GetString(encoded));
+
+            _logger.LogInformation($"User {User.Identity.Name} Tried To Access Assignment With Id: {realId} - Time: {DateTime.Now} - IP Address: {HttpContext.Connection.RemoteIpAddress}");
+
             //_logger.LogInformation("Trying to See Assignment Details");
             HttpContext.Session.SetString("StudentAssignment", id.ToString());
             return View(_studentAssignmentsService.GetStudentAssignment(realId));
@@ -74,7 +78,7 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SubmitAction(StudentAssignmentViewModel studentAssignment, IFormFile f)
         {
-            _logger.LogInformation($"User {User.Identity.Name} Tried To Download File - Time: {DateTime.Now} - IP Address: {HttpContext.Connection.RemoteIpAddress}");
+            _logger.LogInformation($"User {User.Identity.Name} Tried To Submit File - Time: {DateTime.Now} - IP Address: {HttpContext.Connection.RemoteIpAddress}");
             try
             {
                 var assignment = _studentAssignmentsService.GetStudentAssignment(studentAssignment.Id).Assignment;
