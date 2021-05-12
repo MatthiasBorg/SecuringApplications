@@ -26,6 +26,7 @@ namespace ShoppingCart.Domain.Models
 
         [Required]
         public virtual Teacher Teacher { get; set; }
+
         [ForeignKey("Teacher")]
         public Guid TeacherId { get; set; }
     }

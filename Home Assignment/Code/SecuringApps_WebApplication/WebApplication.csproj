@@ -39,8 +39,6 @@
 
   <ItemGroup>
     <Folder Include="NewFolder\" />
-    <Folder Include="Views\Students" />
-    <Folder Include="Views\Teachers" />
   </ItemGroup>
 
 </Project>

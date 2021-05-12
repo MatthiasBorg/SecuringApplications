@@ -25,11 +25,6 @@ namespace ShoppingCart.Data.Repositories
             return _context.StudentAssignments;
         }
 
-        // public IQueryable<StudentAssignment> GetStudentAssignmentsById(Guid id)
-        // {
-        //     throw new NotImplementedException();
-        // }
-
         public Guid AddStudentAssignment(StudentAssignment sa)
         {
             sa.Student = null;
@@ -39,12 +34,10 @@ namespace ShoppingCart.Data.Repositories
             return sa.Id;
         }
 
-        public bool SubmitAssignment(string filePath, Guid id, String signiture, String publicKey, String privateKey, String key, String Iv)
+        public bool SubmitAssignment(string file, Guid id, String signiture, String publicKey, String privateKey, String key, String Iv)
         {
-            //throw new NotImplementedException();
-
             var assignemnt = GetStudentAssignment(id);
-            assignemnt.File = filePath;
+            assignemnt.File = file;
             assignemnt.Submitted = !assignemnt.Submitted;
             assignemnt.Signiture = signiture;
             assignemnt.PublicKey = publicKey;

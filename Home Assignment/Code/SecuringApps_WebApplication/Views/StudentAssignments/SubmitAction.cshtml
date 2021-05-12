@@ -13,23 +13,12 @@
         <form asp-action="SubmitAction" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" value="@Model.Id"/>
-            @*<div class="form-group">
-            <label asp-for="File" class="control-label"></label>
-            <input asp-for="File" class="form-control" />
-            <span asp-validation-for="File" class="text-danger"></span>
-        </div>*@
 
             <div class="form-group">
                 <input name="f" class="form-control" type="file"/>
 
                 <span asp-validation-for="File" class="text-danger"></span>
             </div>
-
-            @*<div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Submitted" /> @Html.DisplayNameFor(model => model.Submitted)
-                </label>
-            </div>*@
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

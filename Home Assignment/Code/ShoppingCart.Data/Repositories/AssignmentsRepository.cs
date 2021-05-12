@@ -12,11 +12,6 @@ namespace ShoppingCart.Data.Repositories
     {
         
         ShoppingCartDbContext _context;
-        public AssignmentsRepository(ShoppingCartDbContext context)
-        {
-            _context = context;
-
-        }
 
         public Guid AddAssignment(Assignment a)
         {
@@ -26,14 +21,10 @@ namespace ShoppingCart.Data.Repositories
             return a.Id;
         }
 
-        // public void DeleteAssignment(Guid id)
-        // {
-        //     throw new NotImplementedException();
-        // }
-
-        public Assignment GetAssignment(Guid id)
+        public AssignmentsRepository(ShoppingCartDbContext context)
         {
-            return _context.Assignments.SingleOrDefault(x => x.Id == id);
+            _context = context;
+
         }
 
         public IQueryable<Assignment> GetAssignments()
@@ -41,10 +32,9 @@ namespace ShoppingCart.Data.Repositories
             return _context.Assignments;
         }
 
-        // public IQueryable<Assignment> GetAssignmentsByTeacher(Guid id)
-        // {
-        //     //return _context.Assignments.Fin
-        //     throw new NotImplementedException();
-        // }
+        public Assignment GetAssignment(Guid id)
+        {
+            return _context.Assignments.SingleOrDefault(x => x.Id == id);
+        }
     }
 }

@@ -19,26 +19,20 @@ namespace WebApplication.Controllers
 {
     public class StudentAssignmentsController : Controller
     {
-        string pass = "Pa$$w0rd";
-        byte[] salt = CryptographicHelper.GenerateSalt();
-        private readonly IAssignmentsService _assignmentsService;
-        //private readonly ITeachersService _teachersService;
         private readonly IStudentsService _studentsService;
         private readonly IStudentAssignmentsService _studentAssignmentsService;
         private IWebHostEnvironment _env;
         private readonly ILogger<StudentAssignmentsController> _logger;
 
-        public StudentAssignmentsController( IStudentAssignmentsService studentAssignmentsService, IStudentsService studentsService, IWebHostEnvironment environment, IAssignmentsService assignmentsService, ILogger<StudentAssignmentsController> logger)
+        public StudentAssignmentsController( IStudentAssignmentsService studentAssignmentsService, IStudentsService studentsService, IWebHostEnvironment environment, ILogger<StudentAssignmentsController> logger)
         {
-            _assignmentsService = assignmentsService;
-            //_teachersService = teachersService;
             _studentsService = studentsService;
             _studentAssignmentsService = studentAssignmentsService;
             _env = environment;
             _logger = logger;
         }
 
-        // GET: StudentAssignmentsController
+        // Gets all the assignments related to a student
         [Authorize(Roles = "Teacher, Student")]
         public ActionResult Index()
         {
@@ -47,8 +41,8 @@ namespace WebApplication.Controllers
             return View(_studentAssignmentsService.GetStudentAssignmentsById(student.Id));
         }
 
+        // Gets all details of a specifc assignment related to student
         [Authorize(Roles = "Teacher, Student")]
-        // GET: StudentAssignmentsController/Details/5
         [AuthorizationFilter]
         public ActionResult Details(String id)
         {
@@ -57,23 +51,20 @@ namespace WebApplication.Controllers
 
             _logger.LogInformation($"User {User.Identity.Name} Tried To Access Assignment With Id: {realId} - Time: {DateTime.Now} - IP Address: {HttpContext.Connection.RemoteIpAddress}");
 
-            //_logger.LogInformation("Trying to See Assignment Details");
             HttpContext.Session.SetString("StudentAssignment", id.ToString());
             return View(_studentAssignmentsService.GetStudentAssignment(realId));
         }
 
         [Authorize(Roles = "Student")]
-        // GET: StudentAssignmentsController/Create
         public ActionResult SubmitAction(String id)
         {
             byte[] encoded = Convert.FromBase64String(id);
             Guid realId = new Guid(System.Text.Encoding.UTF8.GetString(encoded));
-            //HttpContext.Session.SetString("StudentAssignmentToSubmit", id.ToString());
             return View(_studentAssignmentsService.GetStudentAssignment(realId));
         }
 
+        // Submits an assignment
         [Authorize(Roles = "Student")]
-        // POST: StudentAssignmentsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SubmitAction(StudentAssignmentViewModel studentAssignment, IFormFile f)
@@ -87,7 +78,6 @@ namespace WebApplication.Controllers
 
                 if (DateTime.Parse(assignment.Deadline).Date < DateTime.Now.Date) {
                     TempData["warning"] = "Assignment not submitted as deadline was exceeded";
-                    //return RedirectToAction("Details", new { id = _studentAssignmentsService.GetStudentAssignment(studentAssignment.Id) });
                     return View(_studentAssignmentsService.GetStudentAssignment(studentAssignment.Id));
                 }
 
@@ -102,7 +92,7 @@ namespace WebApplication.Controllers
                             int byte1 = stream.ReadByte();
                             int byte2 = stream.ReadByte();
 
-                            if (byte1 == 37 && byte2 == 80)
+                            if (byte1 == 37 && byte2 == 80) // checks for valid pdf
                             {
                             }
                             else {
@@ -111,45 +101,23 @@ namespace WebApplication.Controllers
                             }
                         }
 
-                        if (System.IO.Path.GetExtension(f.FileName) != ".pdf") {
+                        if (System.IO.Path.GetExtension(f.FileName) != ".pdf") { // checks for valid pdf by extension
                             TempData["warning"] = "Assignment not submitted as only PDF files are accepted";
                             return View(_studentAssignmentsService.GetStudentAssignment(studentAssignment.Id));
                         }
 
-                        ////var certLoggedInUser = GetCertificateWithPrivateKeyForIdentity();
-
-                        //var signature = _digitalSignatures.Sign(encryptedText,
-                        //Utils.CreateRsaPrivateKey(certLoggedInUser));
-
-                        //var signiture = CryptographicHelper.CreateSigniture();
-
-                        string newFilename = Guid.NewGuid() + System.IO.Path.GetExtension(f.FileName);
-                        string newFilenameWithAbsolutePath = _env.ContentRootPath + @"\Assignments\" + newFilename;
-
-                        //var mainStream = System.IO.File.Create(newFilenameWithAbsolutePath);
+                        string newFilename = Guid.NewGuid() + System.IO.Path.GetExtension(f.FileName); // creates new file name using guid (to prevent same files with the same name to be overwritten)
+                        string newFilenameWithAbsolutePath = _env.ContentRootPath + @"\Assignments\" + newFilename; // absolute file path
 
                         byte[] fileInBytes;
-
-                        // TRY TO DO LOOP
-
-                        //var signiture = CryptographicHelper.CreateSigniture(memoryStream.ToArray());
-                        //studentAssignment.Signiture = signiture;
-
                         using (var mainStream = System.IO.File.Create(newFilenameWithAbsolutePath))
                         {
+                            // genearting keys - private / public & IV keys
                             Tuple<byte[], byte[]> keyIVPair = CryptographicHelper.GenerateKeys();
                             var keyPair = CryptographicHelper.GenerateAsymmetricKeys(); // key 1 - public; key 2 - private
 
                             studentAssignment.PublicKey = keyPair.Item1;
                             studentAssignment.PrivateKey = keyPair.Item2;
-
-                            // Stage 1 - SymmetricEncryption
-                            //byte[] fileToEncrypt = System.IO.File.ReadAllBytes(newFilenameWithAbsolutePath);
-                            ///byte[] fileToEncryptSE = CryptographicHelper.SymmetricEncrypt(fileToEncrypt);
-
-                            // Stage 2 - AsymetricEncryption
-                            //byte[] fileToEncryptAE = CryptographicHelper.AsymetricEncrypt(fileToEncryptSE, keyPair.Item1);
-
 
                             f.CopyTo(mainStream);
 
@@ -157,39 +125,31 @@ namespace WebApplication.Controllers
 
                             MemoryStream memoryStream = new MemoryStream();
                             mainStream.CopyTo(memoryStream);
-                            fileInBytes = memoryStream.ToArray();
+                            fileInBytes = memoryStream.ToArray(); // getting all bytes of file
 
-                            // Stage 1 - SymmetricEncryption
-                            //byte[] fileToEncrypt = System.IO.File.ReadAllBytes(newFilenameWithAbsolutePath);
-                            byte[] fileToEncryptSE = CryptographicHelper.SymmetricEncrypt(fileInBytes, keyIVPair);
+                            byte[] fileToEncryptSE = CryptographicHelper.SymmetricEncrypt(fileInBytes, keyIVPair);  // symetric encryption of file
                             mainStream.Position = 0;
                             mainStream.Write(fileToEncryptSE);
-                            //fileToEncryptSE.CopyTo()
-                            
 
-                            // Stage 2 - AsymetricEncryption
-                            //byte[] fileToEncryptAE = CryptographicHelper.AsymetricEncrypt(fileToEncryptSE, keyPair.Item1);
-
-                            var signiture = CryptographicHelper.CreateSigniture(fileInBytes, keyPair.Item2);
-
-                            //var signitureAE = CryptographicHelper.AsymetricEncrypt(signiture, studentAssignment.PublicKey);
+                            var signiture = CryptographicHelper.CreateSigniture(fileInBytes, keyPair.Item2); // creating signiture on main file (not encrypted)
 
                             studentAssignment.Signiture = Convert.ToBase64String(signiture);
 
-                            var keyAE = CryptographicHelper.AsymetricEncrypt(keyIVPair.Item1, studentAssignment.PublicKey);
+                            var keyAE = CryptographicHelper.AsymetricEncrypt(keyIVPair.Item1, studentAssignment.PublicKey); // asymetric encryption on key
 
                             studentAssignment.Key = Convert.ToBase64String(keyAE);
 
-                            var ivAE = CryptographicHelper.AsymetricEncrypt(keyIVPair.Item2, studentAssignment.PublicKey);
+                            var ivAE = CryptographicHelper.AsymetricEncrypt(keyIVPair.Item2, studentAssignment.PublicKey); // asymetric encryption on iv
 
                             studentAssignment.Iv = Convert.ToBase64String(ivAE);
                         }
 
 
-                        studentAssignment.File = @"\Assignments\" + newFilename;
+                        studentAssignment.File = @"\Assignments\" + newFilename; // file path to store in db
                     }
                 }
 
+                // storing in db
                 _studentAssignmentsService.SubmitAssignment(studentAssignment.File, studentAssignment.Id, studentAssignment.Signiture, studentAssignment.PublicKey, studentAssignment.PrivateKey, studentAssignment.Key, studentAssignment.Iv);
 
                 TempData["feedback"] = "Assignment was submitted successfully";
@@ -203,11 +163,9 @@ namespace WebApplication.Controllers
                 return RedirectToAction("Error", "Home");
             }
 
-            //return RedirectToAction("Details", new { id = _studentAssignmentsService.GetStudentAssignment(studentAssignment.Id) });//View(_studentAssignmentsService.GetStudentAssignment(studentAssignment.Id));
-            return RedirectToAction("Details", new { id = _studentAssignmentsService.GetStudentAssignment(studentAssignment.Id) });
+            return RedirectToAction("Index", "Home");
         }
 
-        // post: studentassignmentscontroller/edit/5
         [HttpGet]
         [Authorize(Roles = "Teacher, Student")]
         [AuthorizationFilter]
@@ -220,19 +178,19 @@ namespace WebApplication.Controllers
             var studentAssignment = _studentAssignmentsService.GetStudentAssignment(realId);
             string filePath = _env.ContentRootPath + studentAssignment.File;
 
+            // getting all other submitted assignments (to check for copying)
             IList<StudentAssignmentViewModel> allStudentAssignments = _studentAssignmentsService.GetStudentAssignments().Where(x => x.File != null).Where(x => x.Id != realId).ToList();
 
-            byte[] fileBytesEnc = System.IO.File.ReadAllBytes(filePath);
+            byte[] fileBytesEnc = System.IO.File.ReadAllBytes(filePath); // getting the encrypted file from path
 
-            //var signiture = CryptographicHelper.AsymmetricDecrypt(Convert.FromBase64String(studentAssignment.Signiture), studentAssignment.PrivateKey);
-            var key = CryptographicHelper.AsymmetricDecrypt(Convert.FromBase64String(studentAssignment.Key), studentAssignment.PrivateKey);
-            var iv = CryptographicHelper.AsymmetricDecrypt(Convert.FromBase64String(studentAssignment.Iv), studentAssignment.PrivateKey);
+            var key = CryptographicHelper.AsymmetricDecrypt(Convert.FromBase64String(studentAssignment.Key), studentAssignment.PrivateKey); // asymetric decryption on key
+            var iv = CryptographicHelper.AsymmetricDecrypt(Convert.FromBase64String(studentAssignment.Iv), studentAssignment.PrivateKey); // asymetric decryption on iv
 
-            Tuple<byte[], byte[]> keyPair = new Tuple<byte[], byte[]>(key, iv);
+            Tuple<byte[], byte[]> keyPair = new Tuple<byte[], byte[]>(key, iv); // storing key and iv in tupel
 
-            var fileBytes = CryptographicHelper.SymmetricDecrypt(fileBytesEnc, keyPair);
+            var fileBytes = CryptographicHelper.SymmetricDecrypt(fileBytesEnc, keyPair); // getting the proper file by using symetric decryption on encrypted file
 
-            var isValid = CryptographicHelper.VerifySigniture(fileBytes, Convert.FromBase64String(studentAssignment.Signiture), studentAssignment.PublicKey);
+            var isValid = CryptographicHelper.VerifySigniture(fileBytes, Convert.FromBase64String(studentAssignment.Signiture), studentAssignment.PublicKey); // cheks if valid by verifying signiture
 
             if (isValid == false)
             {
@@ -240,6 +198,7 @@ namespace WebApplication.Controllers
                 return RedirectToAction("Details", new { id = id });
             }
 
+            // loop to check all other assignments (copying check)
             foreach (var studentAssignmentByStudent in allStudentAssignments)
             {
                 string filePathOthers = _env.ContentRootPath + studentAssignmentByStudent.File;
@@ -259,10 +218,11 @@ namespace WebApplication.Controllers
                 }
             }
 
-            string filename = studentAssignment.Assignment.Title + " - " + studentAssignment.Student.FirstName + " " + studentAssignment.Student.LastName;
+            string filename = studentAssignment.Assignment.Title + " - " + studentAssignment.Student.FirstName + " " + studentAssignment.Student.LastName; // generating file name to be downloaded
 
+            // downloading file
             var net = new System.Net.WebClient();
-            var data = CryptographicHelper.SymmetricDecrypt(fileBytesEnc, keyPair);//net.DownloadData(filePath);
+            var data = CryptographicHelper.SymmetricDecrypt(fileBytesEnc, keyPair);
             var content = new System.IO.MemoryStream(data);
             var contentType = "application/pdf";
             var fileName = $"{filename}.pdf";

@@ -20,16 +20,16 @@ namespace ShoppingCart.Data.Repositories
             return _context.Teachers;
         }
 
-        public Teacher GetTeacherByEmail(string email)
-        {
-            return _context.Teachers.SingleOrDefault(x => x.Email == email);
-        }
-
         public Guid AddTeacher(Teacher t)
         {
             _context.Teachers.Add(t);
             _context.SaveChanges();
             return t.Id;
+        }
+
+        public Teacher GetTeacherByEmail(string email)
+        {
+            return _context.Teachers.SingleOrDefault(e => e.Email == email);
         }
     }
 }

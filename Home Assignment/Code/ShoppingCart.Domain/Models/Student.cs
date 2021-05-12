@@ -13,8 +13,10 @@ namespace ShoppingCart.Domain.Models
 
         [Required]
         public string Email { get; set; }
+
         [Required]
         public string FirstName { get; set; }
+
         [Required]
         public string LastName { get; set; }
 
@@ -23,6 +25,7 @@ namespace ShoppingCart.Domain.Models
 
         [Required]
         public virtual Teacher Teacher { get; set; }
+
         [ForeignKey("Teacher")]
         public Guid TeacherId { get; set; }
     }

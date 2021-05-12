@@ -25,11 +25,6 @@ namespace ShoppingCart.Data.Repositories
             return _context.Comments;
         }
 
-        // public IQueryable<Comment> GetCommentsByAssignment(Guid id)
-        // {
-        //     throw new NotImplementedException();
-        // }
-
         public Guid AddComment(Comment c)
         {
             c.Student = null;

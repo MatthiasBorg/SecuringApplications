@@ -11,10 +11,8 @@ namespace ShoppingCart.Domain.Interfaces
         Comment GetComment(Guid id);
         
         IQueryable<Comment> GetComments();
-        
-        //IQueryable<Comment> GetCommentsByAssignment(Guid id);
 
-        Guid AddComment(Comment c);
+        Guid AddComment(Comment comment);
 
     }
 }

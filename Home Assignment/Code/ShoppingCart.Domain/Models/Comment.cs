@@ -19,15 +19,18 @@ namespace ShoppingCart.Domain.Models
         public DateTime Timestamp { get; set; }
 
         public virtual Teacher Teacher { get; set; }
+
         [ForeignKey("Teacher")]
         public Guid? TeacherId { get; set; }
 
         public virtual Student Student { get; set; }
+
         [ForeignKey("Student")]
         public Guid? StudentId { get; set; }
 
         [Required]
         public virtual StudentAssignment StudentAssignment { get; set; }
+
         [ForeignKey("StudentAssignment")]
         public Guid StudentAssignmentId { get; set; }
     }

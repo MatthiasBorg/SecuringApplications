@@ -4,16 +4,16 @@
     ViewData["Title"] = "GetAllSubmittedAssignments";
 }
 
-<h1>GetAllSubmittedAssignments</h1>
+<h1>Submitted Assignments - By Students</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Assignment.Title)
+            </th>
+            <th>
+                Student
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Assignment.PublishedDate)
@@ -40,6 +40,9 @@
                         @Html.DisplayFor(modelItem => item.Assignment.Title)
                     </th>
                     <th>
+                        @Html.DisplayFor(modelItem => item.Student.Email)
+                    </th>
+                    <th>
                         @Html.DisplayFor(modelItem => item.Assignment.PublishedDate)
                     </th>
                     <th>
@@ -63,19 +66,6 @@
                     </td>
                 </tr>
             }
-            @*<tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.File)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Submitted)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>*@
         }
     </tbody>
 </table>

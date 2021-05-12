@@ -27,27 +27,26 @@ namespace WebApplication.Controllers
             _logger = logger;
         }
 
-        // GET: AssignmentsController
         [Authorize(Roles = "Teacher")]
         public ActionResult Index()
         {
+            // Gets all the assignments by a teacher
             var teacher = _teachersService.GetTeacherByEmail(User.Identity.Name);
             _logger.LogInformation($"User {User.Identity.Name} Accessed All Assignments - Time: {DateTime.Now} - IP Address: {HttpContext.Connection.RemoteIpAddress}");
             return View(_assignmentsService.GetAssignmentsByTeacher(teacher.Id));
         }
 
-        // GET: AssignmentsController/Details/5
         public ActionResult Details(String id)
         {
+            // Gets the details of a specific assignment
             byte[] encoded = Convert.FromBase64String(id);
-            Guid realId = new Guid(System.Text.Encoding.UTF8.GetString(encoded));
+            Guid realId = new Guid(System.Text.Encoding.UTF8.GetString(encoded)); // Gets string from encoded value of id
 
             _logger.LogInformation($"User {User.Identity.Name} Tried To Access Assignment With Id: {realId} - Time: {DateTime.Now} - IP Address: {HttpContext.Connection.RemoteIpAddress}");
 
             return View(_assignmentsService.GetAssignment(realId));
         }
 
-        // GET: AssignmentsController/Create
         [Authorize(Roles = "Teacher")]
         public ActionResult Create()
         {
@@ -55,7 +54,7 @@ namespace WebApplication.Controllers
             return View();
         }
 
-        // POST: AssignmentsController/Create
+        // Creates a new assignment
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Teacher")]
@@ -90,9 +89,6 @@ namespace WebApplication.Controllers
             }
             catch (Exception ex)
             {
-                //TempData["warning"] = "Assignment Was Not Created";
-                //return View();
-
                 _logger.LogError("Error In Assignment Creation: " + ex.Message);
                 TempData["error"] = "Something Went Wrong During Assignment Creation - We Are Looking Into It";
                 return RedirectToAction("Error", "Home");

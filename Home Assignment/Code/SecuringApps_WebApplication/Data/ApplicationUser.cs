@@ -10,7 +10,6 @@ namespace SecuringApps_WebApplication.Data
     public class ApplicationUser : IdentityUser
     {
 
-        //[Required]
         [PersonalData]
         public String Address { get; set; }
 

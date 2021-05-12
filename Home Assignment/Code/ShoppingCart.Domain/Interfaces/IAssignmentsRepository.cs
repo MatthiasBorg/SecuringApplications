@@ -8,13 +8,10 @@ namespace ShoppingCart.Domain.Interfaces
 {
     public interface IAssignmentsRepository
     {
-        Assignment GetAssignment(Guid id);
         IQueryable<Assignment> GetAssignments();
-        
-        //IQueryable<Assignment> GetAssignmentsByTeacher(Guid id);
+
+        Assignment GetAssignment(Guid id);
         
         Guid AddAssignment(Assignment a);
-
-        //void DeleteAssignment(Guid id);
     }
 }

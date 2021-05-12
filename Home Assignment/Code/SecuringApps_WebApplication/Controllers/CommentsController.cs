@@ -36,32 +36,32 @@ namespace WebApplication.Controllers
             _logger = logger;
         }
 
-        // GET: CommentsController
+        // Gets all the comments for a specific assignment
         [AuthorizationFilter]
         public ActionResult Index(String id)
         {
-            byte[] encoded = Convert.FromBase64String(id);
-            Guid realId = new Guid(System.Text.Encoding.UTF8.GetString(encoded));
+            byte[] encodedId = Convert.FromBase64String(id);
+            Guid realId = new Guid(System.Text.Encoding.UTF8.GetString(encodedId)); // Gets string from encoded value of id
 
             _logger.LogInformation($"User {User.Identity.Name} Accessed Comment For Assignemt With Id: {realId} - Time: {DateTime.Now} - IP Address: {HttpContext.Connection.RemoteIpAddress}");
 
             return View(_commentsService.GetCommentsByAssignment(realId));
         }
 
-        // GET: CommentsController/Create
         public ActionResult Create()
         {
             _logger.LogInformation($"User {User.Identity.Name} Tried To Create Comment - Time: {DateTime.Now} - IP Address: {HttpContext.Connection.RemoteIpAddress}");
             return View();
         }
 
-        // POST: CommentsController/Create
+        // Creates new comment
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CommentViewModel comment)
         {
             try
             {
+                // Checks if teacher or student submitted comment
                 if (User.IsInRole("Teacher"))
                 {
                     var currentUser = _teachersService.GetTeacherByEmail(User.Identity.Name);

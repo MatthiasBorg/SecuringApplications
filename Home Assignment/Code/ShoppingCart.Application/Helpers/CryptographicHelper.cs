@@ -69,16 +69,6 @@ namespace ShoppingCart.Application.Helpers
             return salt;
         }
 
-
-        //public static string SymmetricEncrypt(string plainTextMessage)
-        //{
-
-        //    byte[] messageAsBytes = Encoding.UTF32.GetBytes(plainTextMessage);
-
-        //    byte[] cipherAsBytes = SymmetricEncrypt(messageAsBytes);
-
-        //    return Convert.ToBase64String(cipherAsBytes);
-        //}
         public static byte[] SymmetricEncrypt(byte[] plainTextMessage, Tuple<byte[], byte[]>  _keyIVPair)
         {
             Aes aes = Aes.Create();
@@ -117,15 +107,6 @@ namespace ShoppingCart.Application.Helpers
                 }
             }
         }
-
-        //public static string SymmetricDecrypt(string cipherText)
-        //{
-        //    byte[] cipherTextAsBytes = Convert.FromBase64String(cipherText);
-
-        //    byte[] plainTextAsBytes = SymmetricDecrypt(cipherTextAsBytes);
-
-        //    return Encoding.UTF32.GetString(plainTextAsBytes);
-        //}
         public static byte[] SymmetricDecrypt(byte[] encryptedMessage, Tuple<byte[], byte[]>  _keyIVPair)
         {
             Aes aes = Aes.Create();
@@ -185,10 +166,6 @@ namespace ShoppingCart.Application.Helpers
 
         public static byte[] AsymetricEncrypt(byte[] data, string publicKey)
         {
-            //byte[] hash;
-            //using (SHA1 sHA1 = SHA1.Create()) {
-            //    hash = sHA1.ComputeHash(data);
-            //}
 
             RSACryptoServiceProvider provider = new RSACryptoServiceProvider();
             provider.FromXmlString(publicKey);
@@ -199,11 +176,6 @@ namespace ShoppingCart.Application.Helpers
 
         public static byte[] AsymmetricDecrypt(byte[] data, string privateKey)
         {
-            //byte[] hash;
-            //using (SHA1 sHA1 = SHA1.Create())
-            //{
-            //    hash = sHA1.ComputeHash(data);
-            //}
 
             RSACryptoServiceProvider provider = new RSACryptoServiceProvider();
             provider.FromXmlString(privateKey);
@@ -245,13 +217,6 @@ namespace ShoppingCart.Application.Helpers
 
         public static bool VerifySigniture(byte[] data, byte[] signature, string publicKey)
         {
-            //RSA rsa = RSA.Create();
-            //rsa.ImportParameters(rsaKeyInfo);
-            //byte[] signature = Convert.FromBase64String(signatureBase64);
-            //bool isValid = rsa.VerifyData(data,
-            //    signature,
-            //    HashAlgorithmName.SHA256,
-            //    RSASignaturePadding.Pkcs1);
 
             byte[] hash;
             using (SHA1 sHA1 = SHA1.Create())
@@ -262,7 +227,6 @@ namespace ShoppingCart.Application.Helpers
             RSA rsa = RSA.Create();
             rsa.FromXmlString(publicKey);
 
-            //byte[] signature = Convert.FromBase64String(signatureBase64);
 
             RSAPKCS1SignatureDeformatter rsaDeformatter = new RSAPKCS1SignatureDeformatter(rsa);
             rsaDeformatter.SetHashAlgorithm("SHA1");

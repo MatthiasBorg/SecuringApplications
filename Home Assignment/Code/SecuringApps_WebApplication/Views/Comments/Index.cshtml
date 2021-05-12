@@ -28,13 +28,9 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Teacher.FirstName)
-                @Html.DisplayFor(modelItem => item.Teacher.LastName)
-                @Html.DisplayFor(modelItem => item.Teacher.Email)
+                @Html.DisplayFor(modelItem => item.Teacher.FirstName) @Html.DisplayFor(modelItem => item.Teacher.LastName)
 
-                @Html.DisplayFor(modelItem => item.Student.FirstName)
-                @Html.DisplayFor(modelItem => item.Student.LastName)
-                @Html.DisplayFor(modelItem => item.Student.Email)
+                @Html.DisplayFor(modelItem => item.Student.FirstName) @Html.DisplayFor(modelItem => item.Student.LastName)
 
             </td>
             <td>

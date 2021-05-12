@@ -54,8 +54,6 @@ namespace SecuringApps_WebApplication.Areas.Identity.Pages.Account
 
         public string ReturnUrl { get; set; }
 
-        //public IList<AuthenticationScheme> ExternalLogins { get; set; }
-
         public class InputModel
         {
             [Required]
@@ -74,9 +72,6 @@ namespace SecuringApps_WebApplication.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             public string Password { get; set; }
-
-            [Required]
-            public string Address { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -128,6 +123,9 @@ namespace SecuringApps_WebApplication.Areas.Identity.Pages.Account
                     EmailHelper emailHelper = new EmailHelper(newStudent.Email, emailSubject, emailBody);
                     
                     emailHelper.SendEmail();
+
+                    TempData["feedback"] = "Student was created successfully";
+                    return RedirectToAction("Index", "Home");
                 }
                 foreach (var error in result.Errors)
                 {
