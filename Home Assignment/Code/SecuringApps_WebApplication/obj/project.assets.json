@@ -10147,7 +10147,7 @@
   },
   "packageFolders": {
     "C:\\Users\\borgm\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Microsoft\\Xamarin\\NuGet": {}
   },
   "project": {
     "version": "1.0.0",
@@ -10159,7 +10159,7 @@
       "outputPath": "C:\\Users\\borgm\\Documents\\Git Repos\\Securing Applications\\Securing-Applications\\Home Assignment\\Code\\SecuringApps_WebApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Microsoft\\Xamarin\\NuGet"
       ],
       "configFilePaths": [
         "C:\\Users\\borgm\\AppData\\Roaming\\NuGet\\NuGet.Config",
